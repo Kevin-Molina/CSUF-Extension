@@ -1,0 +1,23 @@
+{
+  "name": "CSUF RMP",
+  "description": "Work in Progress",
+  "manifest_version": 2,
+  "version": "0.8",
+  "icons": { 
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png" 
+  },
+  "permissions": [
+    "activeTab",
+    "http://*/",
+    "https://*/"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Click me!"
+  }
+}
