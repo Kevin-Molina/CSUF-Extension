@@ -9,7 +9,7 @@ Array.from(page.querySelectorAll("[id^='MTG_INSTR$']") ).forEach( el => {
 
     // For every professor found, search for RMP page
     searchProfessor(el)
-  
+
 
 });
 
@@ -80,9 +80,13 @@ function pageCheck(page,element){
  * @param {String} URL 
  */
 function addAnchor (wrapper, URL) {
-  var a = document.createElement('a');
-  a.href = URL;
-  a.textContent = wrapper.textContent;
-  wrapper.replaceChild(a, wrapper.firstChild);
+    
+    var a = document.createElement('a');
+    a.href = URL;
+    a.textContent = wrapper.textContent;
+    
+    // Opens in new window/tab
+    a.setAttribute('target', '_blank');
+    wrapper.replaceChild(a, wrapper.firstChild);
 }
 
