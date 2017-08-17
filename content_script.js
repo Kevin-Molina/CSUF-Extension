@@ -1,3 +1,5 @@
+
+
 // Handle page's frame (to allow DOM access)
 var page = top.frames["TargetContent"].document;
 
@@ -9,7 +11,6 @@ Array.from(page.querySelectorAll("[id^='MTG_INSTR$']") ).forEach( el => {
 
     // For every professor found, search for RMP page
     searchProfessor(el)
-
 
 });
 
@@ -25,7 +26,7 @@ function searchProfessor(professorEl) {
 
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            pageCheck(this,professorEl);
+            pageCheck(this.response,professorEl);
 
         }
     }
@@ -46,7 +47,7 @@ function searchProfessor(professorEl) {
  */
 function pageCheck(page,element){
 
-    var ProfURL = page.response.getElementsByClassName('listing PROFESSOR')[0].childNodes[1].href
+    var ProfURL = page.getElementsByClassName('listing PROFESSOR')[0].childNodes[1].href
 
     // If the element exists, we have a hit (and the prof's page!)
     if (ProfURL) {
@@ -59,7 +60,7 @@ function pageCheck(page,element){
         // Create box to display prof info on hover
         xhr1.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // TODO
+                addTooltip(this.response,element);
             }
         }
 
@@ -70,6 +71,26 @@ function pageCheck(page,element){
     }
     
 }
+
+function addTooltip(profPage,profElement) {
+
+    var name = profElement.textContent;
+    var grade = profPage.getElementsByClassName('grade')[0].textContent;    
+    var difficulty = profPage.getElementsByClassName('grade')[2].textContent;
+    var ratings = profPage.getElementsByClassName('table-toggle rating-count active')[0].textContent;
+    ratings = ratings.trim();
+    var content = "Grade: " + grade;
+
+    profElement.firstChild.setAttribute("data-toggle","popover");
+    profElement.firstChild.setAttribute("data-trigger","hover");
+    profElement.firstChild.setAttribute("title",name);
+    profElement.firstChild.setAttribute("data-content",content);
+    profElement.popover();
+
+}
+
+
+
 
 
 
@@ -84,7 +105,7 @@ function addAnchor (wrapper, URL) {
     var a = document.createElement('a');
     a.href = URL;
     a.textContent = wrapper.textContent;
-    
+
     // Opens in new window/tab
     a.setAttribute('target', '_blank');
     wrapper.replaceChild(a, wrapper.firstChild);
