@@ -1,5 +1,3 @@
-
-
 // Handle page's frame (to allow DOM access)
 var page = top.frames["TargetContent"].document;
 
@@ -46,7 +44,6 @@ function searchProfessor(professorEl) {
  * @param {Reference to prof} element 
  */
 function pageCheck(page,element){
-
     var ProfURL = page.getElementsByClassName('listing PROFESSOR')[0].childNodes[1].href
 
     // If the element exists, we have a hit (and the prof's page!)
@@ -60,7 +57,7 @@ function pageCheck(page,element){
         // Create box to display prof info on hover
         xhr1.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                addTooltip(this.response,element);
+                addPopover(this.response,element);
             }
         }
 
@@ -72,20 +69,28 @@ function pageCheck(page,element){
     
 }
 
-function addTooltip(profPage,profElement) {
+function addPopover(profPage,profElement) {
 
+    // Retrieve & Format Professor Data
     var name = profElement.textContent;
-    var grade = profPage.getElementsByClassName('grade')[0].textContent;    
+    var quality = profPage.getElementsByClassName('grade')[0].textContent;    
     var difficulty = profPage.getElementsByClassName('grade')[2].textContent;
     var ratings = profPage.getElementsByClassName('table-toggle rating-count active')[0].textContent;
     ratings = ratings.trim();
-    var content = "Grade: " + grade;
+    
+    // Concatenate into 1 string
+    var content = "Overall Quality: " + quality + "<br />" + "Difficulty: " + difficulty + "<br />" + ratings;
+   
+    // Set attributes for popover
+    profElement.setAttribute("data-toggle","popover");
+    profElement.setAttribute("data-trigger","hover");
+    profElement.setAttribute("title",name);
+    profElement.setAttribute("data-content",content);
+    profElement.setAttribute("data-html",true);
+    
 
-    profElement.firstChild.setAttribute("data-toggle","popover");
-    profElement.firstChild.setAttribute("data-trigger","hover");
-    profElement.firstChild.setAttribute("title",name);
-    profElement.firstChild.setAttribute("data-content",content);
-    profElement.popover();
+    $(profElement).popover();
+    
 
 }
 
@@ -110,4 +115,5 @@ function addAnchor (wrapper, URL) {
     a.setAttribute('target', '_blank');
     wrapper.replaceChild(a, wrapper.firstChild);
 }
+
 

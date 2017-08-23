@@ -14,7 +14,7 @@
     "https://*/"
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["jquery-3.2.1.min.js","bootstrap.min.js","background.js"],
     "persistent": false
   },
   "browser_action": {
