@@ -19,6 +19,6 @@
   },
   "browser_action": {
     "default_title": "Click me!"
-  }//,
-  //"web_accessible_resources": ["bootstrap-native.js"]
+  },
+  "web_accessible_resources": ["bootstrap.min.css"]
 }

@@ -1,6 +1,16 @@
 // Handle page's frame (to allow DOM access)
 var page = top.frames["TargetContent"].document;
 
+// Use CDN instead of local file
+var style = document.createElement('link');
+style.href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+style.rel = 'stylesheet';
+
+// style.href = chrome.runtime.getURL('bootstrap.min.css');
+
+// Append to head of frame
+top.frames["TargetContent"].document.head.appendChild(style);
+
 // Reference every professor listed and modify the registration page
 Array.from(page.querySelectorAll("[id^='MTG_INSTR$']") ).forEach( el => {
     if (el.textContent == "Staff") {
