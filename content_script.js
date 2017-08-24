@@ -1,15 +1,22 @@
 // Handle page's frame (to allow DOM access)
 var page = top.frames["TargetContent"].document;
 
+
 // Use CDN instead of local file
 var style = document.createElement('link');
 style.href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
 style.rel = 'stylesheet';
 
-// style.href = chrome.runtime.getURL('bootstrap.min.css');
-
 // Append to head of frame
 top.frames["TargetContent"].document.head.appendChild(style);
+
+// Add custom styling (Done this way due to insertCSS bug)
+var popoverStyle = document.createElement('style');
+popoverStyle.innerHTML = ".popover-title { color: white; background-color: #e17000;} " + 
+                         ".popover { color: white; background-color: #00274C;";
+page.head.appendChild(popoverStyle);
+
+
 
 // Reference every professor listed and modify the registration page
 Array.from(page.querySelectorAll("[id^='MTG_INSTR$']") ).forEach( el => {
@@ -100,7 +107,7 @@ function addPopover(profPage,profElement) {
     
 
     $(profElement).popover();
-    
+   
 
 }
 
