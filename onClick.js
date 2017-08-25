@@ -1,6 +1,14 @@
-// Handle page's frame (to allow DOM access)
-var page = top.frames["TargetContent"].document;
+//    =================== onClick.js ===============================
+//
+//    Runs on Extension icon click. Searches through CSUF's
+//    registration page and pulls professor information, 
+//    then creates multiple AJAX requests to retrieve professor info
+//    and display on registration page with Bootstrap's popover.
+//    
+//    ==============================================================
 
+// Handle for page's frame (to allow correct DOM access)
+var page = top.frames["TargetContent"].document;
 
 // Use CDN instead of local file
 var style = document.createElement('link');
@@ -12,7 +20,7 @@ top.frames["TargetContent"].document.head.appendChild(style);
 
 // Add custom styling (Done this way due to insertCSS bug)
 var popoverStyle = document.createElement('style');
-popoverStyle.innerHTML = ".popover-title { color: white; background-color: #e17000;} " + 
+popoverStyle.innerHTML = ".popover-title { color: white; background-color: #e17000; font-weight: bold;} " + 
                          ".popover { color: white; background-color: #00274C;";
 page.head.appendChild(popoverStyle);
 
@@ -37,6 +45,7 @@ Array.from(page.querySelectorAll("[id^='MTG_INSTR$']") ).forEach( el => {
  * @param {Reference to prof} professorEl 
  */
 function searchProfessor(professorEl) {
+    console.log(typeof(professorEl));
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function() {
@@ -57,7 +66,7 @@ function searchProfessor(professorEl) {
 /**
  * Verify prof's page exists and modify registration page
  * 
- * @param {DOM Obj} page 
+ * @param {DOM Object} page 
  * @param {Reference to prof} element 
  */
 function pageCheck(page,element){
@@ -65,6 +74,7 @@ function pageCheck(page,element){
 
     // If the element exists, we have a hit (and the prof's page!)
     if (ProfURL) {
+
         // Link to the prof's RMP page
         addAnchor(element, ProfURL);    
 
@@ -81,11 +91,20 @@ function pageCheck(page,element){
         xhr1.open('GET', ProfURL);
         xhr1.responseType = 'document';
         xhr1.send();
-
     }
     
 }
 
+
+
+/**
+ * Formats MTG_INSTR$* Professor Element to add 
+ * required attributes for popover functionality,
+ * then initializes.
+ * 
+ * @param {DOM object} profPage 
+ * @param {Reference to prof} profElement 
+ */
 function addPopover(profPage,profElement) {
 
     // Retrieve & Format Professor Data
@@ -105,14 +124,9 @@ function addPopover(profPage,profElement) {
     profElement.setAttribute("data-content",content);
     profElement.setAttribute("data-html",true);
     
-
+    // Initialize popover
     $(profElement).popover();
-   
-
 }
-
-
-
 
 
 
