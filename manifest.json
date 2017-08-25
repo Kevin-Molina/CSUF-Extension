@@ -1,6 +1,6 @@
 {
-  "name": "CSUF Schedule Aid",
-  "description": "Displays CSUF professor info when icon is clicked on CSUF registration page (class listing page)",
+  "name": "CSUF Registration Aid",
+  "description": "Displays CSUF professor info when icon is clicked on CSUF course listing page",
   "manifest_version": 2,
   "version": "0.9",
   "icons": { 

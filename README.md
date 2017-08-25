@@ -24,5 +24,7 @@ Extension will be accessible from Chrome Extension store December 2017 for stude
 * Download .crx file from Github
 * Visit 'Extensions' page on Chrome (chrome://extensions/)   
 * Drag and drop .crx file onto Extensions page
-* Install Extension  
-    
+* Add Extension
+
+Once Extension is installed, simply login and visit course listing page and click the Extension's icon.
+Alternatively, use https://www.fullerton.edu/schedule to view courses when not logged in.
