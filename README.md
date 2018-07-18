@@ -4,7 +4,7 @@
 
 ## CSUF Registration Aid
 
-Google Chrome Extension that modifies CSUF's course registration page.  Extension links to all found ratemyprofessor pages and display professor data on hover with Bootstrap's popover.
+Google Chrome Extension that modifies CSUF's course registration page.  Extension links to all existing ratemyprofessor pages and displays professor data on hover with Bootstrap's popover.
 
 <h1 align="center">
     <img src="http://i.imgur.com/JKoX3lT.png" alt="Extension example" style="width:729,height:240;">
@@ -17,8 +17,6 @@ Designed to speed up class registration process. No more opening up 5 different 
 
 
 ## Installation
-
-Extension will be accessible from Chrome Extension store December 2017 for student use moving forward. 
 
 <b>Until official release,</b> 
 * Download .crx file from Github
