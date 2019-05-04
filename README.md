@@ -11,18 +11,18 @@ Google Chrome Extension that modifies CSUF's course registration page.  Extensio
 </h1>
 
 
-## Motivation
-
-Designed to speed up class registration process. No more opening up 5 different tabs and grinding out searches to evaluate professors while the clock is ticking to pick a class before it gets filled. Ultimately, I wanted to create something I would use and be excited to show off. 
-
+Designed to speed up class registration process. No more opening up 5 different tabs and grinding out searches to evaluate professors while the clock is ticking to pick a class before it gets filled. 
 
 ## Installation
-
-<b>Until official release,</b> 
+<b>Until official release, </b>
 * Download .crx file from Github
-* Visit 'Extensions' page on Chrome (chrome://extensions/)   
+* Visit 'Extensions' page on Chrome (chrome://extensions/)
+* On the top right, toggle Developer Mode to on
 * Drag and drop .crx file onto Extensions page
-* Add Extension
+* Click Add Extension
 
-Once Extension is installed, simply login and visit course listing page and click the Extension's icon.
-Alternatively, use https://www.fullerton.edu/schedule to view courses when not logged in.
+## Usage
+* Head to CSUF's searchable class schedule (https://www.fullerton.edu/schedule)
+* Search for some classes
+* Once you see the classes/professors listed, click the extension icon on the top right of Chrome
+* Hover over a professor's name or click it to go to their RMP page.
