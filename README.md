@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="news.fullerton.edu/_resources/images/icons/favicon/csuf-logo-cmyk-TM.png" alt="CSUF Banner" style="width:855,height:299;">
+    <img src="csufBanner.png" alt="CSUF Banner" style="width:855,height:299;">
 </h1>
 
 ## CSUF Registration Aid
